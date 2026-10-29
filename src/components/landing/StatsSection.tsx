@@ -136,7 +136,7 @@ export default function StatsSection() {
 	);
 }
 
-type StatProps = StatItem & { index: number };
+type StatProps = StatItem & { index: number; caption?: string };
 
 function Stat({ value, suffix = "+", label, caption, index }: StatProps) {
 	const [n, setN] = useState(0);
