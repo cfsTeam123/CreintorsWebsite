@@ -5,7 +5,7 @@
  * @format
  */
 
-import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
@@ -47,24 +47,6 @@ import NotFound from "./pages/NotFound";
 
 export default function App() {
 	const location = useLocation();
-const hostname = window.location.hostname.toLowerCase();
-
-    const isCautomateDomain =
-        hostname === "cautomate.com" ||
-        hostname === "www.cautomate.com";
-
-		if (isCautomateDomain) {
-        return (
-            <Navigate
-                to={{
-                    pathname: "/cautomate",
-                    search: location.search,
-                    hash: location.hash,
-                }}
-                replace
-            />
-        );
-    }
 
 	return (
 		<div
@@ -77,7 +59,7 @@ const hostname = window.location.hostname.toLowerCase();
 			<Navbar />
 
 			<Routes location={location}>
-				 
+				
 					<Route
 						path="/"
 						element={<Landing />}
