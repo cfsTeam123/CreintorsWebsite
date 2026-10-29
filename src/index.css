@@ -1,0 +1,712 @@
+/**
+ * Designed  & Developed by Faisal Nadaf
+ * Contact: faisalfnadaf@gmail.com
+ *
+ * @format
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Carlito:ital@1&display=swap");
+
+@import "@fontsource-variable/geist";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* Global typography: headings in Cambria, sub-headings in Ebrima */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Cambria", "Georgia", "Times New Roman", serif;
+	}
+
+	/*
+	 * Review feedback: body/paragraph copy read as too dense. The inherited
+	 * body size goes up one notch (16px → 17px) with a slightly looser line
+	 * height. Tailwind's text-* utilities are rem-based (relative to <html>),
+	 * so this lifts inherited copy without disturbing any sized component.
+	 */
+	body {
+		font-size: 1.0625rem;
+		line-height: 1.65;
+	}
+
+	p {
+		line-height: 1.7;
+	}
+}
+
+:root {
+	color-scheme: light;
+	--grid-size: 56px;
+	--cursor-x: 50vw;
+	--cursor-y: 50vh;
+
+	/* Light industrial palette */
+	--surface-0: #ffffff;
+	--surface-1: #f7f9fc;
+	--surface-2: #eef2f8;
+	--ink-900: #0b1220;
+	--ink-700: #1e293b;
+	--ink-500: #475569;
+	--ink-400: #64748b;
+	--ink-300: #94a3b8;
+	--hairline: #e2e8f0;
+	--hairline-strong: #cbd5e1;
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	background: #eef6fb;
+	color: var(--ink-900);
+	font-family: "Inter", system-ui, sans-serif;
+	overflow-x: clip;
+}
+
+body {
+	margin: 0;
+	background-image:
+		radial-gradient(
+			1100px 700px at 88% -10%,
+			rgba(23, 158, 224, 0.1),
+			transparent 60%
+		),
+		radial-gradient(
+			900px 700px at -5% 100%,
+			rgba(70, 54, 127, 0.08),
+			transparent 60%
+		),
+		linear-gradient(180deg, #eef6fb 0%, #dceaf4 100%);
+}
+
+::selection {
+	background: rgba(23, 158, 224, 0.18);
+	color: #0b1220;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #eef2f8;
+}
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #179ee0, #46367f);
+	border-radius: 8px;
+}
+
+@layer components {
+	.container-x {
+		@apply mx-auto w-full max-w-7xl px-6 lg:px-10;
+	}
+
+	/* Light glass frosted white panel with subtle border */
+	.glass {
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.75),
+			rgba(255, 255, 255, 0.55)
+		);
+		border: 1px solid rgba(15, 23, 42, 0.06);
+		backdrop-filter: blur(18px) saturate(1.1);
+		-webkit-backdrop-filter: blur(18px) saturate(1.1);
+		box-shadow:
+			0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+			0 24px 60px -30px rgba(15, 23, 42, 0.18);
+	}
+
+	.glass-strong {
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.92),
+			rgba(255, 255, 255, 0.78)
+		);
+		border: 1px solid rgba(15, 23, 42, 0.08);
+		backdrop-filter: blur(24px) saturate(1.15);
+		-webkit-backdrop-filter: blur(24px) saturate(1.15);
+		box-shadow:
+			0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+			0 30px 80px -30px rgba(15, 23, 42, 0.22);
+	}
+
+	.surface-card {
+		background: #ffffff;
+		border: 1px solid rgba(15, 23, 42, 0.07);
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.9) inset,
+			0 18px 40px -22px rgba(15, 23, 42, 0.14);
+	}
+
+	.section-tint {
+		background:
+			radial-gradient(
+				80% 60% at 50% 0%,
+				rgba(23, 158, 224, 0.1),
+				transparent 70%
+			),
+			radial-gradient(
+				60% 80% at 100% 100%,
+				rgba(70, 54, 127, 0.08),
+				transparent 65%
+			),
+			linear-gradient(180deg, #cae6fe 0%, #c2e5ff 100%);
+	}
+
+	.section-tint::before,
+	.section-tint::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 1px;
+		pointer-events: none;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(23, 158, 224, 0.45),
+			rgba(70, 54, 127, 0.45),
+			transparent
+		);
+	}
+
+	.section-tint::before {
+		top: 0;
+	}
+
+	.section-tint::after {
+		bottom: 0;
+	}
+
+
+	/*
+	 * Stats / Track Record band.
+	 *
+	 * One flat brand surface for every stats section on the site. These bands
+	 * each used to sit on their own background photograph behind a heavy dark
+	 * overlay, which made them noisy and different from page to page. Defined
+	 * once here so the colour can never drift between pages.
+	 */
+	.section-stats {
+		background-color: #dceaf4;
+	}
+
+	.section-stats::before,
+	.section-stats::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 1px;
+		pointer-events: none;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(23, 158, 224, 0.35),
+			rgba(70, 54, 127, 0.35),
+			transparent
+		);
+	}
+
+	.section-stats::before {
+		top: 0;
+	}
+
+	.section-stats::after {
+		bottom: 0;
+	}
+
+	.section-deep {
+		background:
+			radial-gradient(
+				80% 60% at 50% 0%,
+				rgba(23, 158, 224, 0.22),
+				transparent 70%
+			),
+			radial-gradient(
+				60% 80% at 100% 100%,
+				rgba(70, 54, 127, 0.18),
+				transparent 65%
+			),
+			linear-gradient(180deg, #cae6fe 0%, #c2e5ff 100%);
+	}
+
+	.section-deep::before,
+	.section-deep::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 1px;
+		pointer-events: none;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(23, 158, 224, 0.7),
+			rgba(70, 54, 127, 0.7),
+			transparent
+		);
+	}
+
+	.section-deep::before {
+		top: 0;
+	}
+
+	.section-deep::after {
+		bottom: 0;
+	}
+
+	.text-gradient {
+		background: linear-gradient(120deg, #0b1220 0%, #179ee0 50%, #46367f 100%);
+		background-size: 200% 100%;
+		background-position: 0% 50%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+		transition: background-position 800ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.text-gradient-brand {
+		background: linear-gradient(90deg, #179ee0 0%, #46367f 50%, #179ee0 100%);
+		background-size: 200% 100%;
+		background-position: 0% 50%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		transition: background-position 800ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.text-gradient:hover,
+	.group:hover .text-gradient,
+	.text-gradient-brand:hover,
+	.group:hover .text-gradient-brand {
+		background-position: 100% 50%;
+	}
+
+	.chip {
+		@apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-600 backdrop-blur;
+	}
+
+	.btn-primary {
+		@apply relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white transition-transform duration-300 hover:scale-[1.03];
+	}
+
+	.btn-ghost {
+		@apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-6 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:bg-white hover:text-slate-900;
+	}
+
+	/*
+	 * Heading scale.
+	 *
+	 * Three shared tokens so the same kind of heading is the same size on every
+	 * page. Page heroes had drifted to eleven different clamp values and section
+	 * headings to eight, which is what made the typography feel uneven.
+	 *
+	 *   .page-title       — the H1 at the top of a page
+	 *   .section-title    — a primary section H2
+	 *   .section-title-sm — a secondary / closing-CTA H2
+	 */
+	.page-title {
+		@apply font-display text-[clamp(2.4rem,6.4vw,5rem)] font-semibold leading-[1.02] tracking-tight;
+	}
+
+	.section-title {
+		@apply font-display text-4xl font-semibold leading-[1.05] tracking-tight text-slate-900 md:text-6xl;
+	}
+
+	.section-title-sm {
+		@apply font-display text-3xl font-semibold leading-[1.1] tracking-tight text-slate-900 md:text-5xl;
+	}
+
+	/*
+	 * A heading painted with a gradient as a whole block (`bg-clip-text` on the
+	 * heading itself, not on a span inside it). A block's painted box is its
+	 * line box — 1.05em at this leading — and Cambria's descenders drop below
+	 * it, so the tails of p, y and g came out cut ("p is getting cut", "y is
+	 * getting cut in curiosity, capability", 19 Sep change list). The padding
+	 * gives them room inside the painted box; the negative margin takes the
+	 * same room back, so nothing below the heading moves. An inline span needs
+	 * neither: its painted box is the font's full height.
+	 */
+	:is(.page-title, .section-title, .section-title-sm).bg-clip-text {
+		padding-bottom: 0.16em;
+		margin-bottom: -0.16em;
+	}
+
+	.eyebrow {
+		@apply mb-4 inline-flex items-center gap-2 font-subheading text-xs font-semibold uppercase tracking-[0.32em] text-brand-600;
+	}
+
+	.noise::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.025;
+		mix-blend-mode: multiply;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+	}
+
+	.reveal {
+		opacity: 1;
+		transform: none;
+	}
+
+	.tk-fade {
+		transition:
+			opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform, opacity;
+	}
+
+	.tk-fade.tk-armed {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+
+	.tk-fade.tk-in {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.reveal-from-top,
+	.reveal-from-bottom,
+	.reveal-from-left,
+	.reveal-from-right {
+		transition:
+			opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform, opacity;
+	}
+
+	.reveal-from-top.tk-armed {
+		opacity: 0;
+		transform: translate3d(0, -48px, 0);
+	}
+	.reveal-from-bottom.tk-armed {
+		opacity: 0;
+		transform: translate3d(0, 48px, 0);
+	}
+	.reveal-from-left.tk-armed {
+		opacity: 0;
+		transform: translate3d(-56px, 0, 0);
+	}
+	.reveal-from-right.tk-armed {
+		opacity: 0;
+		transform: translate3d(56px, 0, 0);
+	}
+
+	.reveal-from-top.tk-in,
+	.reveal-from-bottom.tk-in,
+	.reveal-from-left.tk-in,
+	.reveal-from-right.tk-in {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tk-fade,
+		.tk-fade.tk-armed,
+		.reveal-from-top,
+		.reveal-from-top.tk-armed,
+		.reveal-from-bottom,
+		.reveal-from-bottom.tk-armed,
+		.reveal-from-left,
+		.reveal-from-left.tk-armed,
+		.reveal-from-right,
+		.reveal-from-right.tk-armed {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+	}
+}
+
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+.marquee-track {
+	animation: marquee 40s linear infinite;
+}
+
+@keyframes stats-rotate {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.stats-glow-rotate {
+	background: conic-gradient(
+		from 0deg,
+		rgba(23, 158, 224, 0.55),
+		transparent 25%,
+		rgba(70, 54, 127, 0.5) 50%,
+		transparent 75%,
+		rgba(23, 158, 224, 0.55)
+	);
+	animation: stats-rotate 8s linear infinite;
+	filter: blur(14px);
+}
+
+@keyframes stats-shimmer-sweep {
+	0% {
+		transform: translateX(-120%) skewX(-12deg);
+		opacity: 0;
+	}
+	15% {
+		opacity: 1;
+	}
+	85% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(220%) skewX(-12deg);
+		opacity: 0;
+	}
+}
+
+.stats-shimmer {
+	background: linear-gradient(
+		110deg,
+		transparent 30%,
+		rgba(255, 255, 255, 0.55) 50%,
+		transparent 70%
+	);
+	opacity: 0;
+}
+
+.stats-shimmer.is-on {
+	animation: stats-shimmer-sweep 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.stats-glow-rotate {
+		animation: none;
+	}
+	.stats-shimmer.is-on {
+		animation: none;
+		opacity: 0;
+	}
+}
+
+.cursor-dot,
+.cursor-ring {
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: 9999;
+	border-radius: 9999px;
+	margin-left: -4px;
+	margin-top: -4px;
+	mix-blend-mode: difference;
+}
+.cursor-dot {
+	width: 8px;
+	height: 8px;
+	background: #ffffff;
+}
+.cursor-ring {
+	width: 38px;
+	height: 38px;
+	margin-left: -19px;
+	margin-top: -19px;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 1024px) {
+	.cursor-dot,
+	.cursor-ring {
+		display: none;
+	}
+}
+
+/*
+ * Google Translate widget.
+ *
+ * The widget is only ever driven through our own selector, so every piece of
+ * chrome it ships with is suppressed: the container itself, the top banner
+ * frame (which otherwise pushes the whole document down by ~40px and breaks
+ * every `fixed` header on the site), the hover balloon and the yellow
+ * highlight it paints over translated runs.
+ */
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-te-gadget,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+	display: none !important;
+}
+
+iframe.skiptranslate {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+/* The banner sets `body { top: 40px }` inline; this holds the layout still. */
+body {
+	top: 0 !important;
+	position: static !important;
+}
+
+.goog-text-highlight {
+	background: none !important;
+	box-shadow: none !important;
+}
+
+/* Trailing tail cursor overlay */
+.tail-cursor {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 99999;
+}
+
+/* Hide the native cursor while the tail cursor is active (desktop only).
+   Text fields keep their caret so inputs stay usable. */
+html.tail-cursor-active,
+html.tail-cursor-active * {
+	cursor: none !important;
+}
+html.tail-cursor-active input,
+html.tail-cursor-active textarea,
+html.tail-cursor-active select,
+html.tail-cursor-active [contenteditable="true"] {
+	cursor: text !important;
+}
+
+/* ═════════════════ Indic scripts (Hindi, Marathi, Kannada) ════════════════ */
+
+/*
+ * Everything below is scoped to the `data-script` / `data-lang` attributes that
+ * lib/translate.ts stamps on <html>, so the English page never sees any of it.
+ *
+ * The problem it fixes: the type stack is Latin-only — Cambria for headings,
+ * Inter for body — and the heading scale above is set at Latin leadings, as
+ * tight as 0.92. Devanagari and Kannada stack vowel marks well above and below
+ * the base letter, so through a Latin stack the glyphs come out taller than the
+ * line box reserved for them, and their tops and tails were being sliced off:
+ * by `background-clip: text` on the gradient headings, which paints only inside
+ * the box, and by the many `overflow-hidden` cards.
+ *
+ * Three parts — a real font per script so the metrics are right, room in the
+ * leading, and no letter-spacing: Devanagari is joined along the shirorekha and
+ * comes apart when it is tracked out.
+ */
+
+:root[data-lang="hi"],
+:root[data-lang="mr"] {
+	--script-sans: "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
+	--script-serif: "Noto Serif Devanagari", "Nirmala UI", "Mangal", serif;
+}
+
+:root[data-lang="kn"] {
+	--script-sans: "Noto Sans Kannada", "Nirmala UI", "Tunga", sans-serif;
+	--script-serif: "Noto Serif Kannada", "Nirmala UI", "Tunga", serif;
+}
+
+/* ── Fonts ──────────────────────────────────────────────────────────────── */
+
+:root[data-script="indic"] body,
+:root[data-script="indic"] .font-body,
+:root[data-script="indic"] .font-subheading {
+	font-family: var(--script-sans);
+}
+
+:root[data-script="indic"] :is(h1, h2, h3, h4, h5, h6),
+:root[data-script="indic"] :is(.page-title, .section-title, .section-title-sm),
+:root[data-script="indic"] .font-display,
+:root[data-script="indic"] .font-heading {
+	font-family: var(--script-serif);
+}
+
+/* ── Leading ────────────────────────────────────────────────────────────── */
+
+:root[data-script="indic"] :is(.page-title, .section-title, .section-title-sm) {
+	line-height: 1.35;
+}
+
+:root[data-script="indic"] .leading-none {
+	line-height: 1.3;
+}
+
+:root[data-script="indic"] .leading-tight {
+	line-height: 1.4;
+}
+
+:root[data-script="indic"] .leading-snug {
+	line-height: 1.45;
+}
+
+/*
+ * The arbitrary leadings used around the site, every one of them Latin-tight.
+ * Listed out rather than matched with [class*="leading-["] so that the roomy
+ * ones — leading-[1.7] — are left as they are.
+ */
+:root[data-script="indic"] .leading-\[0\.92\],
+:root[data-script="indic"] .leading-\[0\.95\],
+:root[data-script="indic"] .leading-\[1\.02\],
+:root[data-script="indic"] .leading-\[1\.05\],
+:root[data-script="indic"] .leading-\[1\.1\],
+:root[data-script="indic"] .leading-\[1\.18\],
+:root[data-script="indic"] .leading-\[1\.2\],
+:root[data-script="indic"] .leading-\[1\.22\] {
+	line-height: 1.35;
+}
+
+/* ── Tracking ───────────────────────────────────────────────────────────── */
+
+/*
+ * Devanagari is joined along the shirorekha, the bar running across the top of
+ * a word, and letter-spacing breaks that bar into pieces. The site tracks its
+ * small-caps labels out as far as 0.42em, which shatters them; Kannada suffers
+ * the same way. Everything comes back to a hair of spacing, and the negative
+ * tracking on the headings goes back to normal.
+ */
+:root[data-script="indic"] [class*="tracking-"] {
+	letter-spacing: 0.04em;
+}
+
+:root[data-script="indic"] :is(
+		.page-title,
+		.section-title,
+		.section-title-sm,
+		.eyebrow
+	) {
+	letter-spacing: normal;
+}
+
+/* ── Gradient headings ──────────────────────────────────────────────────── */
+
+/*
+ * `background-clip: text` fills only the inline box, so ink rising above or
+ * dropping below it comes out transparent — which reads as the letter being cut
+ * in half. Vertical padding on an inline box extends the painted area without
+ * touching the line box, so the marks get their room back for free. Block-level
+ * gradient headings do not need it: their background box is the line box, which
+ * the leading above has already opened up.
+ */
+:root[data-script="indic"] span.bg-clip-text {
+	padding-block: 0.12em;
+}
