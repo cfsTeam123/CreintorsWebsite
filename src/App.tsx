@@ -5,7 +5,7 @@
  * @format
  */
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
@@ -52,6 +52,20 @@ const hostname = window.location.hostname.toLowerCase();
     const isCautomateDomain =
         hostname === "cautomate.com" ||
         hostname === "www.cautomate.com";
+
+		if (isCautomateDomain) {
+        return (
+            <Navigate
+                to={{
+                    pathname: "/cautomate",
+                    search: location.search,
+                    hash: location.hash,
+                }}
+                replace
+            />
+        );
+    }
+
 	return (
 		<div
 			id="top"
@@ -63,10 +77,7 @@ const hostname = window.location.hostname.toLowerCase();
 			<Navbar />
 
 			<Routes location={location}>
-				 {isCautomateDomain ? (
-                    <Route path="*" element={<Cautomate />} />
-                ) : (
-                    <>
+				 
 					<Route
 						path="/"
 						element={<Landing />}
@@ -171,8 +182,7 @@ const hostname = window.location.hostname.toLowerCase();
 						path="*"
 						element={<NotFound />}
 					/>
-					</>
-					)}
+					
 			</Routes>
 			<Footer />
 			<BackToTopButton />
