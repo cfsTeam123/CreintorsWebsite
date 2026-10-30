@@ -125,7 +125,7 @@ const EVENTS: TimelineEvent[] = [
 	{
 		year: 2020,
 		company: "cautomate",
-		text: "Glass vial manufacturing systems for covid vaccine",
+		text: "Glass vial manufacturing systems for COVID vaccine",
 	},
 	
 	{ year: 2021, company: "cautomate", text: "Our first shuttle ASRS" },

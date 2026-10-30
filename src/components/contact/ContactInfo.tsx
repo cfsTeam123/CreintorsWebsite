@@ -95,7 +95,7 @@ export default function ContactInfo() {
 						Mon – Sat
 					</div>
 					<div className="mt-1 text-sm text-slate-600">
-						9:30 AM – 5:40 PM IST
+						9:00 AM – 5:40 PM IST
 					</div>
 				</InfoCard>
 			</div>
