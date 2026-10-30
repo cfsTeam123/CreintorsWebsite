@@ -16,11 +16,15 @@ import { PRIMARY, SECONDARY } from "../lib/theme";
 import { CII_RECOGNITION, VLCI_POINTS } from "../lib/content/explore";
 import { useSeo } from "../lib/seo";
 import { PAGE_SEO } from "../lib/content/seo";
-import cohortPhoto from "../assets/explore/cii-cohort.webp";
+import cohortPhoto from "../assets/explore/cii connect landing.png";
 import innovationAwardsPhoto from "../assets/explore/cii-innovation-awards.webp";
 import startupreneurPhoto from "../assets/explore/cii-startupreneur-awards.webp";
 import vlciPhoto from "../assets/explore/vlci-certificate.webp";
 import vlfmSessionPhoto from "../assets/explore/vlfm-session.webp";
+import newaward3 from "../assets/awards/newaward3.png";
+import newaward7 from "../assets/awards/newaward7.png";
+import newaward6 from "../assets/awards/newaward6.png";
+
 
 /** The stage photograph for each CII_RECOGNITION entry, by year. */
 const RECOGNITION_PHOTOS: Record<string, { src: string; alt: string }> = {
@@ -28,9 +32,21 @@ const RECOGNITION_PHOTOS: Record<string, { src: string; alt: string }> = {
 		src: innovationAwardsPhoto,
 		alt: "Three award recipients holding framed certificates and trophies on a CII Industrial Innovation Awards stage",
 	},
-	"2018": {
+	"2016-Promising": {
+		src: newaward6,
+		alt: "Top 10 Promising Start-Ups – Industrial Innovation Awards 2016",
+	},
+	"2018-startupreneur": {
 		src: startupreneurPhoto,
 		alt: "An award being presented on stage in front of the CII Global Future Business Forum backdrop",
+	},
+	"2018-industrial": {
+		src: newaward3,
+		alt: "Recognition at the CII Industrial Innovation Awards 2018",
+	},
+	"2018-Innovative": {
+		src: newaward7,
+		alt: "Top 25 Innovative Companies 2018",
 	},
 };
 
@@ -180,11 +196,11 @@ function RecognitionSection() {
 
 				<ol className="m-0 mt-14 list-none space-y-16 p-0 md:mt-16 md:space-y-24">
 					{CII_RECOGNITION.map((award, i) => {
-						const photo = RECOGNITION_PHOTOS[award.year];
+						const photo = RECOGNITION_PHOTOS[award.photoKey];
 						const flip = i % 2 === 1;
 						return (
 							<li
-								key={award.year}
+								key={award.photoKey}
 								className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
 								<Reveal
 									from={flip ? "left" : "right"}

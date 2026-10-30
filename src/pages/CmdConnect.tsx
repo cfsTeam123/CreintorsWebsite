@@ -8,6 +8,7 @@
 import PlaceholderPage from "../components/PlaceholderPage";
 import { useSeo } from "../lib/seo";
 import { PAGE_SEO } from "../lib/content/seo";
+import cmdconnectlanding from "../assets/hub/cmd connect landing img.jpeg";
 
 export default function CmdConnect() {
 	useSeo({
@@ -16,6 +17,7 @@ export default function CmdConnect() {
 
 	return (
 		<PlaceholderPage
+		 backgroundImage={cmdconnectlanding}
 			eyebrow="CMD Connect"
 			kicker="LEADERSHIP · DIRECT · IN"
 			titleLead="CMD"

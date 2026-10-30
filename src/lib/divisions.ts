@@ -96,7 +96,7 @@ export const GROUP_SOCIALS: { id: SocialId; label: string; href: string }[] = [
 	{
 		id: "linkedin",
 		label: "LinkedIn",
-		href: "https://www.linkedin.com/company/creintors-group-of-companies/",
+		href: "https://www.linkedin.com/company/creintors-group-of-companies/home/",
 	},
 	{
 		id: "instagram",

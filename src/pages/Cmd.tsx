@@ -1173,15 +1173,16 @@ function AcademicsSection() {
 					{/* Side photo — at the Creintors standee. A full photograph (not a
 					    cut-out), so it is framed, and kept near its 407px source width. */}
 					<motion.div
-						initial={{ opacity: 0, x: 28 }}
-						animate={inView ? { opacity: 1, x: 0 } : {}}
-						transition={{
-							duration: 1,
-							ease: [0.22, 1, 0.36, 1],
-							delay: 0.25,
-						}}
-						className="md:col-span-5">
-						<div className="mx-auto max-w-sm">
+							initial={{ opacity: 0, x: 28 }}
+							animate={inView ? { opacity: 1, x: 0 } : {}}
+							transition={{
+								duration: 1,
+								ease: [0.22, 1, 0.36, 1],
+								delay: 0.25,
+							}}
+							className="md:col-span-5 md:mt-[-250px]"
+						>
+							<div className="mx-auto max-w-sm">
 							<figure
 								className="group relative overflow-hidden rounded-3xl border"
 								style={{

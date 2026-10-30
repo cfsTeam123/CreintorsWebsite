@@ -58,7 +58,7 @@ import i3logo from "../assets/logos/3i-ecosystem.webp";
  *     Subject sits centre-right: the icon badge straddles the bottom-left
  *     and must not land on his face.
  */
-import hubGallery from "../assets/hub/gallery.webp";
+import hubGallery from "../assets/hub/gallaryimg.png";
 import hubPolicies from "../assets/hub/policies.webp";
 import hubCmdConnect from "../assets/hub/cmd-connect.webp";
 import hubKnowledge from "../assets/hub/knowledge-sharing.webp";

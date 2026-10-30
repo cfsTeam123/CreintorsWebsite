@@ -8,6 +8,8 @@
 import PlaceholderPage from "../components/PlaceholderPage";
 import { useSeo } from "../lib/seo";
 import { PAGE_SEO } from "../lib/content/seo";
+import hubKnowledge from "../assets/hub/knowledge-sharing.webp";
+
 
 export default function KnowledgeSharing() {
 	useSeo({
@@ -16,6 +18,7 @@ export default function KnowledgeSharing() {
 
 	return (
 		<PlaceholderPage
+		 backgroundImage={hubKnowledge}
 			eyebrow="Knowledge Sharing"
 			kicker="LEARN · BUILD · INNOVATE"
 			titleLead="Knowledge"

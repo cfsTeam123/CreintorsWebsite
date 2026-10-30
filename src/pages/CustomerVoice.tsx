@@ -8,6 +8,7 @@
 import PlaceholderPage from "../components/PlaceholderPage";
 import { useSeo } from "../lib/seo";
 import { PAGE_SEO } from "../lib/content/seo";
+import hubCustomerVoice from "../assets/hub/customer-voice.webp";
 
 export default function CustomerVoice() {
 	useSeo({
@@ -16,6 +17,7 @@ export default function CustomerVoice() {
 
 	return (
 		<PlaceholderPage
+		 	backgroundImage={hubCustomerVoice}
 			eyebrow="Customer Voice"
 			kicker="LISTEN · DELIVER · TRUST"
 			titleLead="Customer"

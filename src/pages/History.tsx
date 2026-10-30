@@ -84,7 +84,7 @@ const EVENTS: TimelineEvent[] = [
 	{
 		year: 2015,
 		company: "teknosol",
-		text: "Rectangular dissolved air flotation (DAF) unit",
+		text: "Rectangular dissolved air floatation (DAF) unit",
 	},
 	{
 		year: 2015,
@@ -125,23 +125,25 @@ const EVENTS: TimelineEvent[] = [
 	{
 		year: 2020,
 		company: "cautomate",
-		text: "Voil manufacturing systems: 16 robots helping mitigate COVID issues",
+		text: "Glass vial manufacturing systems for covid vaccine",
 	},
-	{
-		year: 2021,
-		company: "cautomate",
-		text: "Creintors Flow Solutions (CFS) incubated",
-	},
-	{
-		year: 2021,
-		company: "cautomate",
-		text: "Mini-bin ASRS for powder metallurgy",
-	},
+	
 	{ year: 2021, company: "cautomate", text: "Our first shuttle ASRS" },
 	{
 		year: 2022,
 		company: "cautomate",
-		text: "Semi-automatic ride-on vehicle",
+		text: "Semi-automatic ride-on vehicle (ROV)",
+	},
+	{
+		year: 2022,
+		company: "cautomate",
+		text: "Creintors Flow Solutions (CFS) incubated",
+	},
+	
+	{
+		year: 2022,
+		company: "cautomate",
+		text: "Mini-bin ASRS for powder metallurgy",
 	},
 	{
 		year: 2023,
@@ -166,7 +168,7 @@ const EVENTS: TimelineEvent[] = [
 	{
 		year: 2025,
 		company: "cautomate",
-		text: "Complete plant automation for Sundaram, Titan and Raymond",
+		text: "Complete plant automation for TVS Fasteners, Tanishq Jewellery and Raymonds",
 	},
 	{ year: 2026, company: "cautomate", text: "World's largest honing machine" },
 	{
@@ -501,7 +503,7 @@ export default function History() {
 
 				<div className="container-x relative">
 					<div className="tk-fade flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-white/55">
-						<span>Our History</span>
+						<span>Our Journey</span>
 					</div>
 
 					<h1 className="tk-fade mt-6 max-w-5xl page-title">
@@ -519,8 +521,7 @@ export default function History() {
 						The story of <span className="font-semibold text-white">Cre</span>
 						ators <span className="text-white/40">+</span>{" "}<span className="font-semibold text-white">In</span>ven
 						<span className="font-semibold text-white">tors</span>. A
-						journey of engineering, conviction and impact spanning one and a half
-						decades.
+						journey of engineering, conviction and impact spanning over a decade.
 					</p>
 
 					<div
@@ -539,14 +540,14 @@ export default function History() {
 							}}>
 							Since 2012
 						</span>
-						<span
+						{/* <span
 							className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/85 backdrop-blur"
 							style={{
 								borderColor: `${PRIMARY}55`,
 								background: `${PRIMARY}14`,
 							}}>
 							{rangeLabel}
-						</span>
+						</span> */}
 						<span
 							className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/85 backdrop-blur"
 							style={{

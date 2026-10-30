@@ -649,7 +649,7 @@ function ClosingSection() {
 	return (
 		<section
 			ref={ref}
-			className="section-tint relative isolate flex items-center overflow-hidden py-10 md:h-[80vh]">
+			className="section-tint relative isolate flex items-center overflow-hidden py-10 md:h-[90vh]">
 			<div
 				aria-hidden
 				className="pointer-events-none absolute -right-40 top-10 -z-10 h-[480px] w-[480px] rounded-full opacity-40 blur-[140px]"

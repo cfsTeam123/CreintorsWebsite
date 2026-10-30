@@ -31,6 +31,7 @@ export type PlaceholderPageProps = {
 	description: string;
 	/** Optional pills under the divider. */
 	tags?: string[];
+	backgroundImage?: string;
 	/** Optional "what to expect" cards rendered in the light section. */
 	features?: PlaceholderFeature[];
 };
@@ -44,6 +45,7 @@ function PlaceholderHero({
 	titleAccent,
 	description,
 	tags,
+	backgroundImage,
 }: Omit<PlaceholderPageProps, "features">) {
 	return (
 		<section
@@ -57,10 +59,10 @@ function PlaceholderHero({
 				linear-gradient(180deg, rgba(7,12,23,0.22) 0%, rgba(7,12,23,0.40) 55%, rgba(7,12,23,0.80) 100%),
 				radial-gradient(50% 70% at 18% 70%, ${PRIMARY}33, transparent 60%),
 				radial-gradient(60% 80% at 90% 10%, ${SECONDARY}33, transparent 60%),
-				url("${cmdconnectimg}")
+				url("${backgroundImage || cmdconnectimg}")
 				`,
 				backgroundSize: "cover",
-				backgroundPosition: "center",
+				backgroundPosition: "center top",
 				backgroundRepeat: "no-repeat",
 			}}
 			/>
@@ -337,3 +339,4 @@ export default function PlaceholderPage(props: PlaceholderPageProps) {
 		</main>
 	);
 }
+

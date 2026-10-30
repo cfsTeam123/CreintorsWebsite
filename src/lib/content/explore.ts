@@ -60,6 +60,7 @@ export const VLFM_STORIES_URL = "https://www.vlfm.org/OurStoriesType.aspx?Id=3";
 
 export type CiiRecognition = {
 	year: string;
+	photoKey: string;
 	title: string;
 	body: string;
 	/** Says what the photograph shows, and no more than the photograph shows. */
@@ -76,18 +77,40 @@ export type CiiRecognition = {
 export const CII_RECOGNITION: CiiRecognition[] = [
 	{
 		year: "2016",
+		photoKey: "2016",
 		title: "Top 10 Promising Start-up and India's Best Manufacturing Start-up",
 		body: "Two honours from CII in the same year, for a group founded four years earlier.",
 		caption: "On stage at the CII Industrial Innovation Awards.",
 	},
 	{
+		year: "2016",
+		photoKey: "2016-Promising",
+		title: "Top 10 Promising Start-Ups – Industrial Innovation Awards 2016",
+		body: "CTPL Recognised among the Top 10 Promising Start-Ups at the CII Industrial Innovation Awards 2016 for innovation and contributions to industrial development.",
+		caption: "Conferred by Confederation of Indian Industry (CII)",
+	},
+	{
 		year: "2018",
+		photoKey: "2018-startupreneur",
 		title: "Top 25 Most Innovative Company",
 		body: "Named at the CII Startupreneur Awards, presented at CII's Global Future Business Forum in New Delhi.",
 		caption: "CII Startupreneur Awards, Global Future Business Forum, New Delhi.",
 	},
+	{
+		year: "2018",
+		photoKey: "2018-industrial",
+		title: "CII Industrial Innovation Awards 2018",
+		body: "Shortlisted for final jury evaluation at the CII Industrial Innovation Awards 2018, recognising Creintors Automation Solutions Pvt. Ltd. among the entries considered for industrial innovation.",
+		caption: "Conferred by Confederation of Indian Industry (CII) | 2018",
+	},
+	{
+		year: "2018",
+		photoKey: "2018-Innovative",
+		title: "Top 25 Innovative Companies 2018",
+		body: "CTPL Recognised among the Top 25 Innovative Companies in 2018 for contributions to innovation and industrial technology",
+		caption: "Conferred by Confederation of Indian Industry (CI",
+	},
 ];
-
 /** The VLCI course, as the CII page lists it. */
 export const VLCI_POINTS = [
 	"Recognised by AICTE",
