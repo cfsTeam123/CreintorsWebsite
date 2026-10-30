@@ -79,8 +79,10 @@ export function getContactPerson(
  * division page narrows it to its own (see each division's `emails`).
  */
 export const GROUP_EMAILS: string[] = [
-	"sagar.kavadi@creintor.com",
-	"parag@crienviro.com",
+	// "sagar.kavadi@creintor.com",
+	// "parag@crienviro.com",
+	" hr@creintors.com",
+	" hradmin@creintors.com",
 ];
 
 export type SocialId = "linkedin" | "instagram" | "facebook" | "youtube" | "x";

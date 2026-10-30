@@ -243,7 +243,7 @@ const ISO_TAGS = [
 ];
 
 const STATS = [
-	{ value: 20, suffix: "+", label: "Years of Engineering" },
+	//{ value: 20, suffix: "+", label: "Years of Engineering" },
 	{ value: 11, suffix: "+", label: "National Awards" },
 	{ value: 9, suffix: "+", label: "QUALITY Certifications" },
 	{ value: 14, suffix: "+", label: "Dynamic Verticals" },
@@ -547,10 +547,10 @@ function StatsBand() {
 						/>
 						By the numbers
 					</div>
-					<h2 className="section-title mt-3">One and a half decades, measured</h2>
+					<h2 className="section-title mt-3">10+ years of innovation and collective growth</h2>
 				</motion.div>
 
-				<div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+				<div className="grid grid-cols-3 justify-items-center gap-4 md:grid-cols-3 md:gap-6">
 					{STATS.map((s, i) => (
 						<StatCard
 							key={s.label}

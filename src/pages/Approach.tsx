@@ -18,7 +18,7 @@ import IgnoranceLine from "../components/IgnoranceLine";
 
 const MANIFESTO = [
 	"Achieving simple design is tough. It needs a team of self-motivated people who can Create, Invent and Innovate the ingredients that make us “Creintors”.",
-	"Our strong engineering resource, system approach and obsessive team work power the motivation to perform and the commitment to deliver innovative solutions under one roof, with real value addition for our customers.",
+	"Our strong engineering resource, system approach and obsessive team work, power the motivation to perform and the commitment to deliver innovative solutions under one roof, with real value addition for our customers.",
 	"Experience & Knowledge, Automatic Approach and Innovative Solutions: the three pillars that hold up every product we ship.",
 ];
 
