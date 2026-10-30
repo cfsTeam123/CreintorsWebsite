@@ -101,7 +101,7 @@ const FEATURED_AWARDS: Award[] = [
 		kicker: "Confederation of Indian Industry (CII)",
 		title: "CII Industrial Innovation Awards 2018",
 		body: "Shortlisted for final jury evaluation at the CII Industrial Innovation Awards 2018, recognising Creintors Automation Solutions Pvt. Ltd. among the entries considered for industrial innovation.",
-		issuer: "Recognised by Confederation of Indian Industry (CII) | 2018",
+		issuer: "Confederation of Indian Industry (CII) | 2018",
 		image: newaward3,
 		accent: SECONDARY,
 	},
@@ -472,7 +472,7 @@ function StatCard({
 			initial={{ opacity: 0, y: 24 }}
 			animate={trigger ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay }}
-			className="group relative overflow-hidden rounded-3xl border bg-white/95 px-6 py-7 text-center transition-all duration-500 hover:-translate-y-1.5"
+			className="group relative overflow-hidden rounded-3xl border bg-white/95 px-6 py-7 w-full text-center transition-all duration-500 hover:-translate-y-1.5"
 			style={{
 				borderColor: "rgba(15,23,42,0.08)",
 				boxShadow:
