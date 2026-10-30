@@ -67,7 +67,7 @@ const QUALIFICATIONS = ["Diploma (Mechanical)", "B.E (Mechanical)", " MTech (The
 const HONOURS = [
 	"Best boy at Diploma College",
 	"Best boy at Engineering College",
-	"Recognition letter from ABB for plant execution at Hadeed",
+	"Letter of Recognition from ABB for plant execution at SABIC Hadeed",
 	"VLFM",
 	"VLCI",
 	"IIM Bangalore",
@@ -647,7 +647,7 @@ function BioSection() {
 						<span
 							className="font-mono text-[10px] font-semibold uppercase tracking-[0.4em]"
 							style={{ color: PRIMARY }}>
-							Founder, Chairman and Managing Directo
+							Founder, Chairman and Managing Director
 						</span>
 						<span
 							className="h-px w-8"

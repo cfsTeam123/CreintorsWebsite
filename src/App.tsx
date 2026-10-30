@@ -59,7 +59,6 @@ export default function App() {
 			<Navbar />
 
 			<Routes location={location}>
-				
 					<Route
 						path="/"
 						element={<Landing />}
