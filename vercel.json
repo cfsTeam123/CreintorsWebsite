@@ -9,7 +9,7 @@
           "value": "cautomate.com"
         }
       ],
-      "destination": "https://cautomate.com/cautomate",
+      "destination": "/cautomate",
       "permanent": false
     },
     {
@@ -20,7 +20,29 @@
           "value": "www.cautomate.com"
         }
       ],
-      "destination": "https://cautomate.com/cautomate",
+      "destination": "/cautomate",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "crienviro.com"
+        }
+      ],
+      "destination": "/crienviro",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.crienviro.com"
+        }
+      ],
+      "destination": "/crienviro",
       "permanent": false
     }
   ],
