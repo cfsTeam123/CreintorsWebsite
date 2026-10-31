@@ -1,5 +1,29 @@
 
 {
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "cautomate.com"
+        }
+      ],
+      "destination": "https://www.creintors.com/cautomate",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.cautomate.com"
+        }
+      ],
+      "destination": "https://www.creintors.com/cautomate",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
