@@ -9,8 +9,8 @@
           "value": "cautomate.com"
         }
       ],
-      "destination": "https://www.cautomate.com/cautomate",
-      "permanent": true
+      "destination": "https://cautomate.com/automation",
+      "permanent": false
     },
     {
       "source": "/",
@@ -20,8 +20,8 @@
           "value": "www.cautomate.com"
         }
       ],
-      "destination": "https://www.creintors.com/cautomate",
-      "permanent": true
+      "destination": "https://cautomate.com/automation",
+      "permanent": false
     }
   ],
   "rewrites": [
