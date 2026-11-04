@@ -11,7 +11,8 @@ import { Award, BadgeCheck, Leaf, Shield, ShieldCheck, X } from "lucide-react";
 import { gsap } from "../lib/gsap";
 import { PRIMARY, SECONDARY } from "../lib/theme";
 
-import heroImage from "../assets/awards/award3.png";
+import heroImage from "../assets/hub/certifications.webp";
+//import heroImage from "../assets/awards/award3.png";
 import ctpl1 from "../assets/certificates/ctpl1.jpg";
 import ctpl2 from "../assets/certificates/ctpl2.jpg";
 import ctpl3 from "../assets/certificates/ctpl3.jpg";
@@ -284,7 +285,7 @@ function CertificationsHero() {
 				aria-hidden
 				src={heroImage}
 				alt=""
-				className="pointer-events-none absolute inset-0 -z-40 h-full w-full object-cover opacity-70"
+				className="pointer-events-none absolute inset-0 -z-40 h-full w-full object-cover object-top opacity-70"
 				style={{ filter: "saturate(0.9) contrast(1.08)" }}
 			/>
 

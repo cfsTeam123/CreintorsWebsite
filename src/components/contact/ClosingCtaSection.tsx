@@ -75,7 +75,7 @@ export default function ClosingCtaSection() {
 							<a
 								href={`tel:${phone.replace(/\s+/g, "")}`}
 								translate="no"
-								className="group/btn relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.04]"
+								className="group/btn relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.04] pointer-events-auto md:pointer-events-none md:cursor-default"
 								style={{
 									background: `linear-gradient(120deg, ${PRIMARY} 0%, ${SECONDARY} 100%)`,
 									boxShadow: `0 18px 44px -15px ${PRIMARY}aa`,
