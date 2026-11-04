@@ -40,7 +40,7 @@ export default async function handler(
 
   const smtpUser = process.env.SMTP_USER;
   const smtpPassword = process.env.SMTP_PASS;
-  const recipient = process.env.CONTACT_TO || "software@cautomate.com";
+  const recipient = "software@cautomate.com";
 
   if (!smtpUser || !smtpPassword) {
     console.error("SMTP configuration is missing.");
