@@ -110,7 +110,7 @@ export default async function handler(
     departmentRecipients.general;
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.contact@creintors.com",
+    host: "smtp.office365.com",
     port: 587,
     secure: false,
     auth: {
