@@ -87,7 +87,7 @@ export default async function handler(
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
-    secure: true,
+    secure: false,
     auth: {
       user: smtpUser,
       pass: smtpPassword,
