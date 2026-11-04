@@ -110,8 +110,8 @@ export default async function handler(
     departmentRecipients.general;
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.titan.email",
-    port: 465,
+    host: "smtp.contact@creintors.com",
+    port: 587,
     secure: false,
     auth: {
       user: smtpUser,
