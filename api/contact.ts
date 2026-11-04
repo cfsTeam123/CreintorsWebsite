@@ -10,14 +10,23 @@ const MAX_LENGTH = {
   message: 5000,
 };
 
-const allowedDepartments = new Set([
-  "general",
-  "Creintors",
-  "cautomate",
-  "crienviro",
-  "education",
-  "careers",
-]);
+const departmentLabels: Record<string, string> = {
+  general: "General Enquiry",
+  Creintors: "Creintors Test Rigs",
+  cautomate: "C-Automate Automation",
+  crienviro: "Crienviro Water Treatment",
+  education: "3i Ecosystem Education",
+  careers: "Careers",
+};
+
+const departmentRecipients: Record<string, string[]> = {
+  general: ["hr@creintors.com", "hradmin@creintors.com"],
+  Creintors: ["sagar.kavadi@creintors.com","sales@creintors.com"],
+  cautomate: ["software@cautomate.com","rahul.k@cautomate.com","sheldon.d@cautomate.com","sales@cautomate.com"],
+  crienviro: ["parag@crienviro.com","sales@creintors.com"],
+  education: ["hr@creintors.com", "hradmin@creintors.com"],
+  careers:  ["hr@creintors.com", "hradmin@creintors.com"],
+};
 
 function cleanText(value: unknown, maxLength: number): string {
   if (typeof value !== "string") return "";
@@ -40,7 +49,6 @@ export default async function handler(
 
   const smtpUser = process.env.SMTP_USER;
   const smtpPassword = process.env.SMTP_PASS;
-  const recipient = "software@cautomate.com";
 
   if (!smtpUser || !smtpPassword) {
     console.error("SMTP configuration is missing.");
@@ -51,12 +59,17 @@ export default async function handler(
   }
 
   const body =
-    req.body && typeof req.body === "object" && !Array.isArray(req.body)
+    req.body &&
+    typeof req.body === "object" &&
+    !Array.isArray(req.body)
       ? req.body
       : {};
 
   // Honeypot: silently reject automated form submissions.
-  if (typeof body.website === "string" && body.website.trim() !== "") {
+  if (
+    typeof body.website === "string" &&
+    body.website.trim() !== ""
+  ) {
     return res.status(200).json({ success: true });
   }
 
@@ -71,18 +84,30 @@ export default async function handler(
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // Validate form details.
   if (
     !name ||
     !emailPattern.test(email) ||
     !message ||
-    (body.department &&
-      !allowedDepartments.has(department))
+    (department !== "" &&
+      !Object.prototype.hasOwnProperty.call(
+        departmentLabels,
+        department,
+      ))
   ) {
     return res.status(400).json({
       success: false,
       message: "Please check the form details and try again.",
     });
   }
+
+  // Get department display name and email recipients.
+  const departmentName =
+    departmentLabels[department] || "General Enquiry";
+
+  const recipients =
+    departmentRecipients[department] ||
+    departmentRecipients.general;
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -103,19 +128,19 @@ export default async function handler(
         name: "Creintors Website",
         address: smtpUser,
       },
-      to: recipient,
+      to: recipients,
       replyTo: {
         name,
         address: email,
       },
-      subject: `Website Enquiry: ${department || "General Enquiry"}`,
+      subject: `Website Enquiry: ${departmentName}`,
       text: [
-        "New enquiry received from the Creintors website.",
+        "New contact enquiry received from the Creintors website.",
         "",
         `Name: ${name}`,
         `Email: ${email}`,
         `Company: ${company || "Not provided"}`,
-        `Department: ${department || "Not selected"}`,
+        `Department: ${departmentName}`,
         "",
         "Message:",
         message,

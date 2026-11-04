@@ -162,9 +162,9 @@ export default function ContactForm() {
               </h2>
             </div>
 
-            <p className="text-sm text-slate-600 lg:pb-1.5">
+            {/* <p className="text-sm text-slate-600 lg:pb-1.5">
               We'll route your message to the right company engineer.
-            </p>
+            </p> */}
           </div>
 
           <form onSubmit={submit} className="mt-7 flex flex-col gap-5">
@@ -188,6 +188,7 @@ export default function ContactForm() {
                 label="Company"
                 name="company"
                 placeholder="Your organisation"
+                required
               />
 
               <label className="group relative block">
@@ -198,6 +199,7 @@ export default function ContactForm() {
                 <select
                   name="department"
                   defaultValue=""
+                  required
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 outline-none transition focus:border-brand-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(23,158,224,0.12)]"
                 >
                   <option value="" disabled>
