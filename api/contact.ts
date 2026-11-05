@@ -22,8 +22,8 @@ const departmentLabels: Record<string, string> = {
 const departmentRecipients: Record<string, string[]> = {
   general: ["hr@creintors.com", "hradmin@creintors.com"],
   Creintors: ["sagar.kavadi@creintors.com","sales@creintors.com"],
-  cautomate: ["software@cautomate.com","rahul.k@cautomate.com","sheldon.d@cautomate.com","sales@cautomate.com"],
-  crienviro: ["parag@crienviro.com","sales@creintors.com"],
+  cautomate: ["rahul.k@cautomate.com","sheldon.d@cautomate.com","sales@cautomate.com"],
+  crienviro: ["parag@crienviro.com","sales@creintors.com","sagar.kavadi@creintors.com"],
   education: ["hr@creintors.com", "hradmin@creintors.com"],
   careers:  ["hr@creintors.com", "hradmin@creintors.com"],
 };
