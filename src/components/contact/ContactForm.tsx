@@ -184,8 +184,11 @@ export default function ContactForm() {
           </div>
 
           <form onSubmit={submit} className="mt-7 flex flex-col gap-5">
+         
             {/* Contact Details */}
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+
+            {/* First Row: Name, Email, Mobile */}
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
               <Field
                 label="Your name"
                 name="name"
@@ -200,37 +203,6 @@ export default function ContactForm() {
                 placeholder="you@company.com"
                 required
               />
-
-              <Field
-                label="Company"
-                name="company"
-                placeholder="Your organisation"
-                required
-              />
-
-              {/* Department */}
-              <label className="group relative block">
-                <span className="mb-2 block text-xs uppercase tracking-[0.32em] text-slate-500 transition group-focus-within:text-brand-600">
-                  Department
-                </span>
-
-                <select
-                  name="department"
-                  defaultValue=""
-                  required
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 outline-none transition focus:border-brand-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(23,158,224,0.12)]"
-                >
-                  <option value="" disabled>
-                    Choose a company
-                  </option>
-                  <option value="general">General Enquiry</option>
-                  <option value="Creintors">Creintors Test Rigs</option>
-                  <option value="cautomate">C-Automate Automation</option>
-                  <option value="crienviro">Crienviro Water Treatment</option>
-                  <option value="education">3i Ecosystem Education</option>
-                  <option value="careers">Careers</option>
-                </select>
-              </label>
 
               {/* International Mobile Number */}
               <label className="group relative block">
@@ -251,7 +223,40 @@ export default function ContactForm() {
               </label>
             </div>
 
-            {/* Message */}
+            {/* Second Row: Company, Department */}
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <Field
+                label="Company"
+                name="company"
+                placeholder="Your organisation"
+                required
+              />
+
+              <label className="group relative block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.32em] text-slate-500 transition group-focus-within:text-brand-600">
+                  Enquiry Type
+                </span>
+
+                <select
+                  name="department"
+                  defaultValue=""
+                  required
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 outline-none transition focus:border-brand-500 focus:bg-white focus:shadow-[0_0_0_4px_rgba(23,158,224,0.12)]"
+                >
+                  <option value="" disabled>
+                    Choose a company
+                  </option>
+                  <option value="general">General Enquiry</option>
+                  <option value="Creintors">Creintors Test Rigs</option>
+                  <option value="cautomate">C-Automate Automation</option>
+                  <option value="crienviro">Crienviro Water Treatment</option>
+                  <option value="education">3i Ecosystem Education</option>
+                  <option value="careers">Careers</option>
+                </select>
+              </label>
+            </div>
+
+            {/* Third Row: Full Width Message */}
             <Field
               label="What can we engineer for you?"
               name="message"

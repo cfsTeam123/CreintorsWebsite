@@ -27,13 +27,10 @@ const departmentRecipients: Record<string, string[]> = {
     "sagar.kavadi@creintors.com",
     "sales@creintors.com",
   ],
-  // cautomate: [
-  //   "rahul.k@cautomate.com",
-  //   "sheldon.d@cautomate.com",
-  //   "sales@cautomate.com",
-  // ],
-   cautomate: [
-    "software@cautomate.com",
+  cautomate: [
+    "rahul.k@cautomate.com",
+    "sheldon.d@cautomate.com",
+    "sales@cautomate.com",
   ],
   crienviro: [
     "parag@crienviro.com",
