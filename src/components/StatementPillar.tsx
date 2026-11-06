@@ -212,6 +212,9 @@ export default function StatementPillar({
 							decoding="async"
 							className="sp-aside hidden select-none lg:block"
 							style={{
+								width: "100%",
+            					maxWidth: "650px",
+								height: "450px",
 								filter: "drop-shadow(0 24px 36px rgba(0, 60, 110, 0.25))",
 							}}
 							{...reveal(0.55, { opacity: 0, y: 16 })}

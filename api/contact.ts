@@ -186,7 +186,7 @@ export default async function handler(
         `Email: ${email}`,
         `Company: ${company || "Not provided"}`,
         `Mobile: ${validMobile}`,
-        `Department: ${departmentName}`,
+        `Enquiry Type: ${departmentName}`,
         "",
         "Message:",
         message,
