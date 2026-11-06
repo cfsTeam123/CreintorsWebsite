@@ -5,6 +5,10 @@
  */
 
 import { useRef, useState, type FormEvent } from "react";
+import PhoneInput from "react-phone-number-input";
+import { isValidPhoneNumber } from "libphonenumber-js";
+import "react-phone-number-input/style.css";
+
 import Field from "./Field";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -12,16 +16,26 @@ type Status = "idle" | "sending" | "sent" | "error";
 export default function ContactForm() {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
+
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [phone, setPhone] = useState<string | undefined>();
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (status === "sending" || status === "sent") return;
 
-    setStatus("sending");
     setErrorMessage("");
+
+    // Validate international phone number
+    if (!phone || !isValidPhoneNumber(phone)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid mobile number with country code.");
+      return;
+    }
+
+    setStatus("sending");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -31,48 +45,54 @@ export default function ContactForm() {
       email: String(formData.get("email") || ""),
       company: String(formData.get("company") || ""),
       department: String(formData.get("department") || ""),
+      mobile: phone,
       message: String(formData.get("message") || ""),
       website: String(formData.get("website") || ""),
     };
 
     try {
       const response = await fetch("/api/contact", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-		},
-		body: JSON.stringify(payload),
-		});
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-		const responseText = await response.text();
+      const responseText = await response.text();
 
-		let result: { success?: boolean; message?: string };
+      let result: { success?: boolean; message?: string };
 
-		try {
-			result = JSON.parse(responseText);
-		} catch {
-			console.error("Invalid API response:", response.status, responseText);
+      try {
+        result = JSON.parse(responseText);
+      } catch {
+        console.error(
+          "Invalid API response:",
+          response.status,
+          responseText
+        );
 
-			throw new Error(
-				`Server returned an invalid response (${response.status}). Please try again later.`,
-			);
-		}
+        throw new Error(
+          `Server returned an invalid response (${response.status}). Please try again later.`
+        );
+      }
 
-		if (!response.ok || !result.success) {
-			throw new Error(
-				result.message || "Unable to send your message. Please try again.",
-			);
-		}
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Unable to send your message. Please try again."
+        );
+      }
 
       setStatus("sent");
       form.reset();
+      setPhone(undefined);
     } catch (error) {
       setStatus("error");
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Unable to send your message. Please try again.",
+          : "Unable to send your message. Please try again."
       );
     }
   };
@@ -161,14 +181,11 @@ export default function ContactForm() {
                 Let's start a conversation.
               </h2>
             </div>
-
-            {/* <p className="text-sm text-slate-600 lg:pb-1.5">
-              We'll route your message to the right company engineer.
-            </p> */}
           </div>
 
           <form onSubmit={submit} className="mt-7 flex flex-col gap-5">
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {/* Contact Details */}
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
               <Field
                 label="Your name"
                 name="name"
@@ -191,6 +208,7 @@ export default function ContactForm() {
                 required
               />
 
+              {/* Department */}
               <label className="group relative block">
                 <span className="mb-2 block text-xs uppercase tracking-[0.32em] text-slate-500 transition group-focus-within:text-brand-600">
                   Department
@@ -213,8 +231,27 @@ export default function ContactForm() {
                   <option value="careers">Careers</option>
                 </select>
               </label>
+
+              {/* International Mobile Number */}
+              <label className="group relative block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.32em] text-slate-500 transition group-focus-within:text-brand-600">
+                  Mobile Number
+                </span>
+
+                <div className="flex min-h-[58px] items-center rounded-2xl border border-slate-200 bg-white px-4 transition focus-within:border-brand-500 focus-within:shadow-[0_0_0_4px_rgba(23,158,224,0.12)]">
+                  <PhoneInput
+                    international
+                    defaultCountry="IN"
+                    value={phone}
+                    onChange={setPhone}
+                    placeholder="Enter mobile number"
+                    className="w-full gap-2 [&_.PhoneInputCountry]:mr-2 [&_.PhoneInputInput]:min-w-0 [&_.PhoneInputInput]:w-full [&_.PhoneInputInput]:border-0 [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:text-base [&_.PhoneInputInput]:text-slate-900 [&_.PhoneInputInput]:outline-none [&_.PhoneInputInput]:placeholder:text-slate-400"
+                  />
+                </div>
+              </label>
             </div>
 
+            {/* Message */}
             <Field
               label="What can we engineer for you?"
               name="message"
@@ -229,7 +266,10 @@ export default function ContactForm() {
               aria-hidden="true"
               className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
             >
-              <label htmlFor="contact-website">Leave this field empty</label>
+              <label htmlFor="contact-website">
+                Leave this field empty
+              </label>
+
               <input
                 id="contact-website"
                 name="website"
@@ -239,6 +279,7 @@ export default function ContactForm() {
               />
             </div>
 
+            {/* Submit Button */}
             <div className="mt-2 flex flex-wrap items-center gap-4">
               <button
                 type="submit"
@@ -285,12 +326,14 @@ export default function ContactForm() {
               </p>
             </div>
 
+            {/* Success Message */}
             {status === "sent" && (
               <p role="status" className="text-sm text-green-700">
                 Thank you! Your enquiry has been sent successfully.
               </p>
             )}
 
+            {/* Error Message */}
             {status === "error" && (
               <p role="alert" className="text-sm text-red-600">
                 {errorMessage}
